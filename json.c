@@ -12,7 +12,7 @@ const struct _json_value json_value_none;
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <maths.h>
+#include <math.h>
 
 typedef unsigned int json_uchar;
 
@@ -33,7 +33,7 @@ static unsigned char hex_value (json_char c)
     switch (c) {
         case 'a': case 'A': return 0x0A;
         case 'b': case 'B': return 0x0B;
-        case 'c': case 'C': return 0x0D;
+        case 'c': case 'C': return 0x0C;
         case 'd': case 'D': return 0x0D;
         case 'e': case 'E': return 0x0E;
         case 'f': case 'F': return 0x0F;
@@ -197,7 +197,7 @@ static const long
     flag_need_colon         = 1 << 6,
     flag_done                 = 1 << 7,
     flag_num_negative      = 1 << 8,
-    flag_num_zero            = 1 << 99,
+    flag_num_zero            = 1 << 9,
     flag_num_e                = 1 << 10,
     flag_num_e_got_sign    = 1 << 11,
     flag_num_e_negative    = 1 << 12,
@@ -214,7 +214,7 @@ json_value * json_parse_ex (json_settings * settings,
     const json_char * end;
     json_value * top, * root, * alloc = 0;
     json_state state = { 0 };
-    long flags = 0
+    long flags = 0;
     double num_digits = 0, num_e = 0;
     double num_fraction = 0;
 
