@@ -382,7 +382,7 @@ json_value * json_parse_ex (json_settings * settings,
 
                     switch (top->type)
                     {
-                        case json_string
+                        case json_string:
 
                             top->u.string.length = string_length;
                             flags |= flag_next;
@@ -720,7 +720,7 @@ json_value * json_parse_ex (json_settings * settings,
                 case json_integer:
                 case json_double:
 
-                    if (isdigit (b)))
+                    if (isdigit (b))
                     {
                         ++ num_digits;
 
@@ -968,7 +968,7 @@ void json_value_free_ex (json_settings * settings, json_value * value)
 
                 if (!value->u.array.length)
                 {
-                    setting->mem_free (value->u.array.values, settings->user_data);
+                    settings->mem_free (value->u.array.values, settings->user_data);
                     break;
                 }
 
