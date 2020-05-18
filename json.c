@@ -228,10 +228,10 @@ json_value * json_parse_ex (json_settings * settings,
         length -= 3;
     }
 
-    error[0] = "\0";
+    error[0] = '\0';
     end = (json + length);
 
-    memcopy (&state.settings, settings, sizeof (json_settings));
+    memcpy (&state.settings, settings, sizeof (json_settings));
 
     if (!state.settings.mem_alloc)
         state.settings.mem_alloc = default_alloc;
@@ -245,7 +245,7 @@ json_value * json_parse_ex (json_settings * settings,
     state.uint_max -= 8; /* limit of how much can be added before next check */
     state.ulong_max -= 8;
 
-    for (state.first_pass = 1, state.first_pass >= 0; -- state.first_pass)
+    for (state.first_pass = 1; state.first_pass >= 0; -- state.first_pass)
     {
         json_uchar uchar;
         unsigned char uc_b1, uc_b2, uc_b3, uc_b4;
